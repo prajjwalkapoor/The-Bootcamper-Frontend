@@ -1,0 +1,21 @@
+/* ./src/index.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.primary-btn {
+  @apply border border-black bg-gray-800 text-white p-2 px-8 mr-2 transition duration-500 ease-in-out transform hover:scale-105 hover:bg-gray-800 hover:text-white;
+}
+.secondary-btn {
+  @apply border border-black p-2 px-8 mx-2  transition duration-500 ease-in-out transform hover:scale-105;
+}
+.primary-s-btn {
+  @apply border border-black bg-gray-800 text-sm text-white p-2 px-4 mx-2 transition duration-500 ease-in-out transform hover:scale-105 hover:bg-gray-800 hover:text-white;
+}
+.secondary-s-btn {
+  @apply border border-black p-2 px-4 mx-2 text-sm transition duration-500 ease-in-out transform hover:scale-105;
+}
+
+.a-s1 {
+  @apply font-medium text-gray-600 hover:text-black hover:scale-105;
+}
