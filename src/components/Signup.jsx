@@ -13,7 +13,7 @@ export default function Signup() {
   const registerSubmit = (e) => {
     e.preventDefault();
     axios
-      .post(`${process.env.HOSTED_URL}/api/v1/auth/register`, {
+      .post(`${process.env.REACT_APP_HOSTED_URL}/api/v1/auth/register`, {
         name,
         email,
         role,
