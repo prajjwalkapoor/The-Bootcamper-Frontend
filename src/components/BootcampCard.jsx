@@ -33,7 +33,7 @@ export default function BootcampCard({ bootcamp }) {
         <h1 className="text-lg md:text-xl font-bold mb-3 text-gray-900">
           {bootcamp.name}
         </h1>
-        <span className="p-2 bg-gray-800 text-white absolute right-0 top-0 text-xs md:">
+        <span className="p-2 bg-gray-800 text-white uppercase px-4 absolute right-0 top-0 text-xs md:">
           {bootcamp.city}
         </span>
         <span className="border w-max border-gray-800 text-sm hidden md:block md:p-1">
