@@ -6,7 +6,7 @@ import { faSpinner } from "@fortawesome/free-solid-svg-icons";
 import BootcampCard from "./BootcampCard";
 export default function SearchResult() {
   const data = useLocation().state;
-  const [searchResult, setSearchResult] = useState(false);
+  const [searchResult, setSearchResult] = useState([]);
   const [loading, setLoading] = useState(true);
   useEffect(() => {
     getSearch();
@@ -16,15 +16,7 @@ export default function SearchResult() {
     const path = `${process.env.REACT_APP_HOSTED_URL}/api/v1/bootcamps?city=${data.city}&careers=${data.career}`;
     axios.get(path).then((res) => setSearchResult(res.data.data));
   };
-  if ((searchResult = []))
-    return (
-      <div className="text-center m-10">
-        <h1 className="text-2xl my-5">No bootcamps found</h1>
-        <Link to="/" className="primary-s-btn">
-          Search again
-        </Link>
-      </div>
-    );
+
   if (!data.city || !data.career)
     return (
       <div className="text-center m-10">
