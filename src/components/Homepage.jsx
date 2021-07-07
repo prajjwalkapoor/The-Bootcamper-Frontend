@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 export default function Homepage() {
+  document.title = "The Bootcamper";
+
   const [city, setCity] = useState("");
   const [career, setCareer] = useState("");
   const data = { city: city, career: career };

@@ -29,7 +29,7 @@ export default function Navbar() {
       </div>
       <div className="md:flex justify-center items-center hidden md:mx-4">
         <Link to="/bootcamps" className="primary-s-btn sm:primary-btn">
-          Browse Bootcams
+          Browse All Bootcams
         </Link>
         {!state.authToken ? (
           <Link

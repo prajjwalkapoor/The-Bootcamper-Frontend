@@ -3,13 +3,18 @@ import React, { useEffect, useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
 import CourseCard from "./CourseCard";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSpinner } from "@fortawesome/free-solid-svg-icons";
 export default function SingleBootcamp({ match }) {
   const { state } = useContext(AuthContext);
   const [bootcamp, setBootcamp] = useState({});
   const [courses, setCourses] = useState([]);
+  const [loading, setLoading] = useState(true);
+
   useEffect(() => {
     getBootcamp();
     getCourses();
+    setLoading(false);
   }, []);
   const getCourses = () => {
     axios
@@ -28,6 +33,12 @@ export default function SingleBootcamp({ match }) {
       .then((res) => setBootcamp(res.data.data))
       .catch((err) => console.log(err));
   };
+  if (loading)
+    return (
+      <div className="text-center">
+        <FontAwesomeIcon icon={faSpinner} size="2x" className="animate-spin" />
+      </div>
+    );
   return (
     <div className="grid grid-cols-1 md:grid-cols-3 gap-8 p-8">
       <div className="col-span-2 grid-rows-1 p-8 bg-white relative">
