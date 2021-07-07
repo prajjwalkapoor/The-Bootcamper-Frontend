@@ -1,29 +1,27 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Link, Redirect } from "react-router-dom";
 import axios from "axios";
 import { useForm } from "react-hook-form";
 import { AuthContext } from "../context/AuthContext";
 export default function Login() {
   const { state, dispatch } = useContext(AuthContext);
+  const [error, setError] = useState(false);
   const { register, handleSubmit, reset } = useForm();
   const loginSubmit = (data, e) => {
-    console.log(data);
+    // console.log(data);
     axios
       .post(`${process.env.REACT_APP_HOSTED_URL}/api/v1/auth/login`, data)
       .then((res) => {
         console.log(res);
-        if (!res.data.success) {
-          return console.log("Invalid credentials");
-        }
         dispatch({
           type: "LOGIN",
           payload: res.data.token,
         });
       })
-      .catch((err) => console.log(err));
+      .catch((err) => setError("Invalid Credentials Entered"));
     reset();
   };
-
+  // console.log(error);
   if (state.authToken) return <Redirect to="/bootcamps" />;
   return (
     <div className="flex mt-4">
@@ -74,6 +72,11 @@ export default function Login() {
             </button>
             <p className="font-semibold">Forgot your password</p>
           </div>
+          {error && (
+            <div className="text-center mt-4 p-2">
+              <p className="text-xl text-red-500 font-bold"> {error}</p>
+            </div>
+          )}
         </form>
         <div className="text-center mt-6 flex flex-col">
           <span className="text-xl text-gray-500">Or</span>
