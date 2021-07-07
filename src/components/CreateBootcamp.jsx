@@ -3,7 +3,6 @@ import { useForm } from "react-hook-form";
 import { Link, Redirect } from "react-router-dom";
 import axios from "axios";
 import { AuthContext } from "../context/AuthContext";
-import CreateCourse from "./CreateCourse";
 export default function CreateBootcamp() {
   const { state } = useContext(AuthContext);
   const { register, handleSubmit, reset } = useForm();

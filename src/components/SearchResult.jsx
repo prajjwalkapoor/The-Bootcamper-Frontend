@@ -1,12 +1,16 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useLocation, Link } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSpinner } from "@fortawesome/free-solid-svg-icons";
 import BootcampCard from "./BootcampCard";
 export default function SearchResult() {
   const data = useLocation().state;
   const [searchResult, setSearchResult] = useState(false);
+  const [loading, setLoading] = useState(true);
   useEffect(() => {
     getSearch();
+    setLoading(false);
   }, []);
   const getSearch = () => {
     const path = `${process.env.REACT_APP_HOSTED_URL}/api/v1/bootcamps?city=${data.city}&careers=${data.career}`;
@@ -23,10 +27,20 @@ export default function SearchResult() {
     );
   return (
     <div className="p-8">
-      {searchResult &&
+      {!loading ? (
+        searchResult &&
         searchResult.map((bootcamp) => {
           return <BootcampCard bootcamp={bootcamp} key={bootcamp._id} />;
-        })}
+        })
+      ) : (
+        <div className="text-center">
+          <FontAwesomeIcon
+            icon={faSpinner}
+            size="2x"
+            className="animate-spin"
+          />
+        </div>
+      )}
     </div>
   );
 }

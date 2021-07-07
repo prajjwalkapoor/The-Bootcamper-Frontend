@@ -7,7 +7,7 @@ export default function AuthProvider({ children }) {
   useEffect(() => {
     if (state.authToken) {
       axios
-        .get(`http://localhost:5000/api/v1/auth/about`, {
+        .get(`${process.env.REACT_APP_HOSTED_URL}/api/v1/auth/about`, {
           headers: { Authorization: `Bearer ${state.authToken}` },
         })
         .then((res) => dispatch({ type: "GET_USER", payload: res.data.data }))

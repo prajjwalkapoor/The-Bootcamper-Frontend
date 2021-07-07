@@ -13,7 +13,7 @@ export default function Navbar_popup({ setIsPopOpen }) {
         className="as-1"
         onClick={() => setIsPopOpen(false)}
       >
-        My Bootcamps
+        See All Bootcamps
       </Link>
       <Link to="/contact" className="as-1" onClick={() => setIsPopOpen(false)}>
         Contact Support
