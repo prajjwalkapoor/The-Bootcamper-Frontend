@@ -40,7 +40,7 @@ export default function Homepage() {
           >
             <option value="">Select a career</option>
             <option value="web-dev">Web Development</option>
-            <option value="UI">UI/UX Design</option>
+            <option value="ui-ux">UI/UX Design</option>
             <option value="marketing">Marketing</option>
             <option value="data-science">Data science</option>
           </select>
