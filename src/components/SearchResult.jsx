@@ -10,11 +10,13 @@ export default function SearchResult() {
   const [loading, setLoading] = useState(true);
   useEffect(() => {
     getSearch();
-    setLoading(false);
   }, []);
   const getSearch = () => {
     const path = `${process.env.REACT_APP_HOSTED_URL}/api/v1/bootcamps?city=${data.city}&careers=${data.career}`;
-    axios.get(path).then((res) => setSearchResult(res.data.data));
+    axios.get(path).then((res) => {
+      setSearchResult(res.data.data)
+      setLoading(false);
+    });
   };
 
   if (!data.city || !data.career)

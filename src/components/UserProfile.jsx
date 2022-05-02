@@ -12,7 +12,6 @@ export default function UserProfile() {
 
   useEffect(() => {
     getUsersBootcamp();
-    setLoading(false);
   }, []);
 
   const getUsersBootcamp = () => {
@@ -28,6 +27,7 @@ export default function UserProfile() {
           return console.log("Something went wrong");
         }
         setData(res.data.data);
+        setLoading(false);
       });
   };
   console.log(state.user);

@@ -15,16 +15,19 @@ export default function Bootcamps() {
   const getBootcamps = () => {
     axios
       .get(
-        `${process.env.REACT_APP_HOSTED_URL}/api/v1/bootcamps?${
-          filterByCity ? "city=" + filterByCity : ""
+        `${process.env.REACT_APP_HOSTED_URL}/api/v1/bootcamps?${filterByCity ? "city=" + filterByCity : ""
         }`
       )
-      .then((res) => setBootcamps(res.data.data))
+      .then((res) => {
+        setBootcamps(res.data.data)
+        setLoading(false)
+      }
+
+      )
       .catch((err) => console.log(err));
   };
   useEffect(() => {
     getBootcamps();
-    setLoading(false);
   }, [getBootcamps]);
   return (
     <div className="md:grid grid-cols-4">

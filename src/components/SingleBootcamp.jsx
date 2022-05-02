@@ -14,14 +14,17 @@ export default function SingleBootcamp({ match }) {
   useEffect(() => {
     getBootcamp();
     getCourses();
-    setLoading(false);
   }, []);
   const getCourses = () => {
     axios
       .get(
         `${process.env.REACT_APP_HOSTED_URL}/api/v1/bootcamps/${match.params.id}/courses`
       )
-      .then((res) => setCourses(res.data.data))
+      .then((res) => {
+        setCourses(res.data.data)
+        setLoading(false);
+
+      })
       .catch((err) => console.log(err));
   };
 
@@ -50,8 +53,8 @@ export default function SingleBootcamp({ match }) {
         </h1>
         {bootcamp.user
           ? bootcamp.user._id === state.user._id && (
-              <Link to={bootcamp._id + "/add-course"}>Add course</Link>
-            )
+            <Link to={bootcamp._id + "/add-course"}>Add course</Link>
+          )
           : ""}
         <span className="p-2 bg-gray-800 text-white absolute right-0 top-0 text-xs md:">
           {bootcamp.city}
